@@ -1,0 +1,17 @@
+#SPRING
+spring:
+  #DATABASE
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dartsapp
+    username: dartsapp
+    password: 123456789
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  #LOGS
+  output:
+    ansi:
+      enabled: ALWAYS
