@@ -18,8 +18,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Rollback
 @Transactional
@@ -93,6 +92,25 @@ public class MatchServiceIntTests {
             service.findById(null);
         });
         assertEquals(ExceptionConstants.REQUIRED_ID, e.getMessage());
+    }
+
+    @Test
+    void should_create_a_match() {
+
+        // GIVEN
+        int oldSize = matches.size();
+        Match newMatch = MatchMother.random();
+
+        // WHEN
+        service.create(newMatch);
+
+        // THEN
+        assertEquals(oldSize + 1, service.findAll().size());
+        Match createdMatch = service.findById(newMatch.getId().toString());
+        assertEquals(newMatch.getId(), createdMatch.getId());
+        assertEquals(newMatch.getMatchDate(), createdMatch.getMatchDate());
+        assertEquals(newMatch.getTotalRounds(), createdMatch.getTotalRounds());
+        assertEquals(newMatch.getScores().size(), createdMatch.getScores().size());
     }
 
     private void assertMatch(Match expected, Match actual) {
