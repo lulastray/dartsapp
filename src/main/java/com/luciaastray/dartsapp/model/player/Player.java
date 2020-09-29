@@ -14,6 +14,7 @@ import java.util.UUID;
 public class Player implements Serializable {
 
     private static final long serialVersionUID = 8857226274311476209L;
+
     @Id
     @GeneratedValue
     private UUID id;
@@ -24,6 +25,15 @@ public class Player implements Serializable {
 
     @OneToMany(mappedBy="player")
     private List<Score> scores;
+
+    public Player() {
+    }
+
+    public Player(UUID id, String name, List<Score> scores) {
+        this.id = id;
+        this.name = name;
+        this.scores = scores;
+    }
 
     public String getName() {
         return name;

@@ -13,6 +13,7 @@ import java.util.UUID;
 public class Match implements Serializable {
 
     private static final long serialVersionUID = 175563824200384680L;
+
     @Id
     private UUID id;
 
@@ -22,6 +23,16 @@ public class Match implements Serializable {
     private LocalDateTime matchDate;
 
     private Long totalRounds;
+
+    public Match() {
+    }
+
+    public Match(UUID id, List<Score> scores, LocalDateTime matchDate, Long totalRounds) {
+        this.id = id;
+        this.scores = scores;
+        this.matchDate = matchDate;
+        this.totalRounds = totalRounds;
+    }
 
     public LocalDateTime getMatchDate() {
         return matchDate;

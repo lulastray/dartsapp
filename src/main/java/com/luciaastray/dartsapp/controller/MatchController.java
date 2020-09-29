@@ -18,7 +18,7 @@ public class MatchController {
     public List<Match> getAll() { return matchService.findAll();}
 
     @GetMapping("/{id}")
-    public Match getOne(@PathVariable String id) { return matchService.findOne(id);}
+    public Match getOne(@PathVariable String id) { return matchService.findById(id);}
 
     @PostMapping("/new")
     public void create(@RequestBody Match match) { matchService.create(match);}

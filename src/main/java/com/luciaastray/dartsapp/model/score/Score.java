@@ -27,6 +27,16 @@ public class Score implements Serializable {
 
     private Long score;
 
+    public Score() {
+    }
+
+    public Score(UUID id, UUID matchId, Player player, Long score) {
+        this.id = id;
+        this.matchId = matchId;
+        this.player = player;
+        this.score = score;
+    }
+
     public Long getScore() {
         return score;
     }
